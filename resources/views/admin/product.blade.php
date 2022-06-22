@@ -11,7 +11,7 @@
 
 	@include('admin.navbar')
 
-    <div class="container-fluid page-body-wrapper mt-5">
+    <div class="container-fluid page-body-wrapper mt-3">
         <div class="container" align="center">
             <h1 class="pt-3" style="font-size:2rem;">Create new product</h1>
 
