@@ -8,7 +8,7 @@
       <li class="nav-item w-100">
         <form action="{{ url('search') }}" method="get" class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
           @csrf
-          <input type="search" class="w-50 m-1 rounded" name="search" placeholder="Search for products">
+          <input type="search" class="form-control m-1 text-white" name="search" placeholder="Search for products">
           
         </form>
       </li>
