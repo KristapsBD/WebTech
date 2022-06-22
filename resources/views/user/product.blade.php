@@ -3,8 +3,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>All Products</h2>
-              <a href="{{ url('allproducts') }}">view all products <i class="fa fa-angle-right"></i></a>
+              <h1 class="d-flex justify-content-center" style="font-size: 2rem;">All Products</h1>
             </div>
           </div>
 
@@ -20,7 +19,7 @@
                 <form action="{{ url('addcart', $product->id) }}" method="post">
                   @csrf
                   <input class="form-control w-25" style="width: 25%" type="number" value="1" min="1" name="quantity"></input>
-                  <input class="btn btn-outline-primary mt-3" type="submit" value="Add to cart"></input>
+                  <input class="btn btn-outline-primary mt-3 text-blue" type="submit" value="Add to cart"></input>
                 </form>
               </div>
             </div>

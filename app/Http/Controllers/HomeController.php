@@ -19,7 +19,7 @@ class HomeController extends Controller
         {
             return view('admin.home');
         } else {
-            $data = product::paginate(3);
+            $data = product::paginate(6);
 
             $user = auth()->user();
             $count = cart::where('phone', $user->phone)->count();
@@ -36,7 +36,7 @@ class HomeController extends Controller
         {
             return view('admin.home');
         } else {
-            $data = product::paginate(3);
+            $data = product::paginate(6);
 
             $user = auth()->user();
             $count = cart::where('phone', $user->phone)->count();
@@ -50,7 +50,7 @@ class HomeController extends Controller
         if(Auth::id()){
             return redirect('redirect');
         } else {
-            $data = product::paginate(3);
+            $data = product::paginate(6);
 
             return view('user.home', compact('data'));
         }
@@ -71,14 +71,14 @@ class HomeController extends Controller
             $count = cart::where('phone', $user->phone)->count();
 
             if($search == ''){
-                $data = product::paginate(3);
+                $data = product::paginate(6);
     
                 return view('user.home', compact('data', 'count'));
             }
 
             $data = product::where('title','Like','%'.$search.'%')->orWhere('description','Like','%'.$search.'%')->get();
     
-            return view('user.home', compact('data', 'count'));
+            return view('user.allproducts', compact('data', 'count'));
         }
     }
 

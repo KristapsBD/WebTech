@@ -33,7 +33,7 @@
                     <form  action="{{ url('search') }}" method="get" class="form-inline mx-auto">
                       @csrf
                       <input class="form-control" type="search" name="search" placeholder="Type something..."></input>
-                      <input class="btn btn-outline-primary m-1 text-white" type="submit" value="Search"></input>
+                      <input class=" input-submit btn btn-outline-primary m-1 text-white" type="submit" value="Search"></input>
                     </form>
                   </div>
                 </li>
