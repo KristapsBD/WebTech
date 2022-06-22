@@ -76,5 +76,13 @@
           <span class="menu-title">Show products</span>
         </a>
       </li>
+      <li class="nav-item menu-items">
+        <a class="nav-link" href="{{'showorder'}}">
+          <span class="menu-icon">
+            <i class="mdi mdi-file-document-box"></i>
+          </span>
+          <span class="menu-title">View orders</span>
+        </a>
+      </li>
     </ul>
   </nav>
