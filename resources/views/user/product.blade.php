@@ -3,14 +3,8 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Latest Products</h2>
+              <h2>Recommended Products</h2>
               <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
-              <form  action="{{ url('search') }}" method="get" class="form-inline float-right">
-                @csrf
-                <input class="form-control" type="search" name="search" placeholder="Type something..."></input>
-                <input class="btn btn-outline-primary m-1" type="submit" value="Search"></input>
-              </form>
-
             </div>
           </div>
 

@@ -28,8 +28,13 @@ jQuery( document ).ready(function( $ ) {
 
           if (scroll >= box - header) {
             $("header").addClass("background-header");
+            $("input[type=submit]").removeClass("text-white");
+            $("input[type=submit]").addClass("text-blue");
+
           } else {
             $("header").removeClass("background-header");
+            $("input[type=submit]").removeClass("text-blue");
+            $("input[type=submit]").addClass("text-white");
           }
         });
         if ($('.owl-clients').length) {
