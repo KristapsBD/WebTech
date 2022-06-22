@@ -4,16 +4,16 @@
 
   <base href="/public">
 
-	@include('admin.css');
+	@include('admin.css')
 
   </head>
   <body>
 
-	@include('admin.sidebar');
+	@include('admin.sidebar')
 
-	@include('admin.navbar');
+	@include('admin.navbar')
 
-    <div class="container-fluid page-body-wrapper">
+    <div class="container-fluid page-body-wrapper mt-5">
         <div class="container" align="center">
             <h1 class="pt-3" style="font-size:2rem;">Update product info</h1>
 
@@ -55,7 +55,7 @@
         </div>
     </div>
 
-	@include('admin.scripts');
+	@include('admin.scripts')
 	
   </body>
 </html>

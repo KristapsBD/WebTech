@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function redirect()
     {
         $usertype = Auth::user()->usertype;
-        if($usertype=='1')
+        if($usertype == '1')
         {
             return view('admin.home');
         } else {
@@ -40,17 +40,29 @@ class HomeController extends Controller
     }
 
     public function search(Request $request){
-        $search = $request->search;
+        $usertype = Auth::user()->usertype;
+        if($usertype == '1'){
+            $search = $request->search;
+            
+            $data = product::where('title','Like','%'.$search.'%')->orWhere('description','Like','%'.$search.'%')->get();
+            return view('admin.showproduct', compact('data'));
 
-        if($search == ''){
-            $data = product::paginate(3);
+        } else {
+            $search = $request->search;
 
-            return view('user.home', compact('data'));
+            $user = auth()->user();
+            $count = cart::where('phone', $user->phone)->count();
+
+            if($search == ''){
+                $data = product::paginate(3);
+    
+                return view('user.home', compact('data', 'count'));
+            }
+
+            $data = product::where('title','Like','%'.$search.'%')->orWhere('description','Like','%'.$search.'%')->get();
+    
+            return view('user.home', compact('data', 'count'));
         }
-
-        $data = product::where('title','Like','%'.$search.'%')->orWhere('description','Like','%'.$search.'%')->get();
-
-        return view('user.home', compact('data'));
     }
 
     public function addcart(Request $request, $id){

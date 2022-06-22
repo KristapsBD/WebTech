@@ -2,16 +2,16 @@
 <html lang="en">
   <head>
 
-	@include('admin.css');
+	@include('admin.css')
 
   </head>
   <body>
 
-	@include('admin.sidebar');
+	@include('admin.sidebar')
 
-	@include('admin.navbar');
+	@include('admin.navbar')
 
-    <div class="container-fluid page-body-wrapper pb-3">
+    <div class="container-fluid page-body-wrapper pb-3 mt-5">
         <div class="container" align="center">
 
         @if(session()->has('message'))
@@ -53,7 +53,7 @@
         </div>
     </div>
 
-	@include('admin.scripts');
+	@include('admin.scripts')
 	
   </body>
 </html>

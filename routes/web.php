@@ -32,7 +32,7 @@ Route::get('/product',[AdminController::class, 'product']);
 
 Route::post('/uploadproduct',[AdminController::class, 'uploadproduct']);
 
-Route::get('/showproduct',[AdminController::class, 'showproduct']);
+Route::get('/showprod',[AdminController::class, 'showproduct']);
 
 Route::get('/deleteproduct/{id}',[AdminController::class, 'deleteproduct']);
 
