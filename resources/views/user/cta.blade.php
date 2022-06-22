@@ -9,7 +9,7 @@
                   <p>This store was made for WebTech course exam using Laravel</p>
                 </div>
                 <div class="col-md-4">
-                  <a href="#" class="btn btn-primary">Browse products</a>
+                  <a href="{{ url('allproducts') }}" class="btn btn-primary">Browse products</a>
                 </div>
               </div>
             </div>

@@ -5,7 +5,7 @@
       <div class="text-content">
         <h4>Best Products</h4>
         <h2>Welcome to the online store!</h2>
-        <button class="btn btn-primary m-3 btn-lg" href="">Shop now</button>
+        <a class="btn btn-primary m-3 btn-lg" href="{{ url('allproducts') }}" role="button">Shop now</a>
       </div>
     </div>
   </div>

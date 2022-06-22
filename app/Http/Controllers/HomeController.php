@@ -23,8 +23,25 @@ class HomeController extends Controller
 
             $user = auth()->user();
             $count = cart::where('phone', $user->phone)->count();
+            $latestdata = product::latest()->take(3)->get();
 
-            return view('user.home', compact('data', 'count'));
+            return view('user.home', compact('data', 'count', 'latestdata'));
+        }
+    }
+
+    public function allproducts()
+    {
+        $usertype = Auth::user()->usertype;
+        if($usertype == '1')
+        {
+            return view('admin.home');
+        } else {
+            $data = product::paginate(3);
+
+            $user = auth()->user();
+            $count = cart::where('phone', $user->phone)->count();
+
+            return view('user.allproducts', compact('data', 'count'));
         }
     }
 
@@ -43,7 +60,7 @@ class HomeController extends Controller
         $usertype = Auth::user()->usertype;
         if($usertype == '1'){
             $search = $request->search;
-            
+
             $data = product::where('title','Like','%'.$search.'%')->orWhere('description','Like','%'.$search.'%')->get();
             return view('admin.showproduct', compact('data'));
 
@@ -119,5 +136,13 @@ class HomeController extends Controller
         }
         DB::table('carts')->where('phone', $phone)->delete();
         return redirect()->back()->with('message','Order sent!');
+    }
+
+    public function viewproduct($id){
+        $product = product::find($id);
+        $user = auth()->user();
+        $count = cart::where('phone', $user->phone)->count();
+
+        return view('user.viewproduct', compact('product', 'count'));
     }
 }

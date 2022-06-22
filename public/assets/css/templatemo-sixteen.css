@@ -443,6 +443,10 @@ footer .inner-content p a {
 	margin-top: 100px;
 }
 
+.view-product {
+	padding-top: 100px;
+}
+
 .products .filters {
 	text-align: center;
 	border-bottom: 1px solid #eee;

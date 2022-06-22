@@ -11,9 +11,7 @@
 
     @include('user.header')
 
-    @include('user.banner')
-
-    @include('user.latestproducts')
+    @include('user.viewitem')
 
     @include('user.cta')
 

@@ -14,7 +14,7 @@
             </a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link" href="products.html">Products</a>
+            <a class="nav-link" href="{{ url('allproducts') }}">Products</a>
           </li>
           @if (Route::has('login'))
             @auth

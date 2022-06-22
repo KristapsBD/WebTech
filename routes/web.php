@@ -54,4 +54,8 @@ Route::get('/showorder',[AdminController::class, 'showorder']);
 
 Route::get('/updatestatus/{id}',[AdminController::class, 'updatestatus']);
 
+Route::get('/allproducts',[HomeController::class, 'allproducts']);
+
+Route::get('/viewproduct/{id}',[HomeController::class, 'viewproduct']);
+
 });
