@@ -11,10 +11,10 @@
                         @csrf
                         <label for="sortby">Sort by:</label><br>
                         <select name="sortby" id="sortby">
-                            <option value="asc" {{ $request->sortby == "asc" ? "selected" : ""}}>Price ascending</option>
-                            <option value="desc" {{ $request->sortby == "desc" ? "selected" : ""}}>Price descending</option>
-                            <option value="desctime" {{ $request->sortby == "desctime" ? "selected" : ""}}>Newest first</option>
-                            <option value="asctime" {{ $request->sortby == "asctime" ? "selected" : ""}}>Oldest first</option>
+                            <option value="asc" {{isset($request) ? $request->sortby == "asc" ? "selected" : "" : ""}}>Price ascending</option>
+                            <option value="desc" {{isset($request) ? $request->sortby == "desc" ? "selected" : "" : ""}}>Price descending</option>
+                            <option value="desctime" {{isset($request) ? $request->sortby == "desctime" ? "selected" : "" : ""}}>Newest first</option>
+                            <option value="asctime" {{isset($request) ? $request->sortby == "asctime" ? "selected" : "" : ""}}>Oldest first</option>
                         </select><br>
                         <button type="submit" class="btn btn-outline-primary text-blue m-3">Apply</button>
                     </form>
