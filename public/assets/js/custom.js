@@ -29,12 +29,12 @@ jQuery( document ).ready(function( $ ) {
           if (scroll >= box - header) {
             $("header").addClass("background-header");
             $(".input-submit").removeClass("text-white");
-            $(".input-submit]").addClass("text-blue");
+            $(".input-submit").addClass("text-blue");
 
           } else {
             $("header").removeClass("background-header");
-            $(".input-submit]").removeClass("text-blue");
-            $(".input-submit]").addClass("text-white");
+            $(".input-submit").removeClass("text-blue");
+            $(".input-submit").addClass("text-white");
           }
         });
         if ($('.owl-clients').length) {
