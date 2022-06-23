@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->string('product_name')->nullable();
-            $table->string('quantity')->nullable();
-            $table->string('price')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->integer('price')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

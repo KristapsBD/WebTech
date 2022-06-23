@@ -51,8 +51,9 @@ class HomeController extends Controller
             return redirect('redirect');
         } else {
             $data = product::paginate(6);
+            $latestdata = product::latest()->take(3)->get();
 
-            return view('user.home', compact('data'));
+            return view('user.home', compact('data', 'latestdata'));
         }
     }
 
@@ -144,5 +145,22 @@ class HomeController extends Controller
         $count = cart::where('phone', $user->phone)->count();
 
         return view('user.viewproduct', compact('product', 'count'));
+    }
+
+    public function filter(Request $request){
+        if($request->sortby == 'asc' || $request->sortby == 'desc'){
+            $data = Product::orderBy('price', $request->sortby ?? 'ASC')->get();
+        } else {
+            if($request->sortby == 'asctime'){
+                $data = Product::orderBy('id', 'ASC')->get();
+            } else {
+                $data = Product::orderBy('id', 'DESC')->get();
+            }
+        }
+
+        $user = auth()->user();
+        $count = cart::where('phone', $user->phone)->count();
+
+        return view('user.allproducts', compact('data', 'count'));
     }
 }
