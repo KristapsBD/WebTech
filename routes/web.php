@@ -60,4 +60,6 @@ Route::get('/viewproduct/{id}',[HomeController::class, 'viewproduct']);
 
 Route::get('/filter',[HomeController::class, 'filter']);
 
+Route::get('/orders',[HomeController::class, 'orders']);
+
 });

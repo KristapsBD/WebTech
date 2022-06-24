@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('product_title')->nullable();
             $table->integer('quantity')->nullable();
-            $table->integer('price')->nullable();
+            $table->decimal('price', 7, 2)->nullable();
             $table->timestamps();
         });
     }

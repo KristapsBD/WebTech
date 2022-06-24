@@ -163,4 +163,12 @@ class HomeController extends Controller
 
         return view('user.allproducts', compact('data', 'count', 'request'));
     }
+
+    public function orders(){
+        $user = auth()->user();
+        $orders = order::where('phone', $user->phone)->get();
+        $count = cart::where('phone', $user->phone)->count();
+
+        return view('user.showorder', compact('orders', 'count'));
+    }
 }
