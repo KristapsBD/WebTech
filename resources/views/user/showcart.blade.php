@@ -44,9 +44,9 @@
                         $quantity = $item->quantity
                         @endphp
                         @for ($i = $quantity; $i > 0; $i--)
-                          @php
-                            $total += $item->price
-                          @endphp
+                        @php
+                        $total += $item->price
+                        @endphp
                         @endfor
                     </tr>
                     @endforeach

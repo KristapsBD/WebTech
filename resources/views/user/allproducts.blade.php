@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
     @include('user.css')
 
-  </head>
+</head>
 
-  <body>
+<body>
 
     @include('user.header')
 
@@ -17,6 +17,6 @@
 
     @include('user.scripts')
 
-  </body>
+</body>
 
 </html>

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
 
-	@include('admin.css')
+<head>
 
-  </head>
-  <body>
+    @include('admin.css')
 
-	@include('admin.sidebar')
+</head>
 
-	@include('admin.navbar')
+<body>
 
-	@include('admin.body')
+    @include('admin.sidebar')
 
-	@include('admin.scripts')
-	
-  </body>
+    @include('admin.navbar')
+
+    @include('admin.body')
+
+    @include('admin.scripts')
+
+</body>
+
 </html>
