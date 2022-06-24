@@ -74,7 +74,7 @@ class HomeController extends Controller
             if($search == ''){
                 $data = product::paginate(6);
     
-                return view('user.home', compact('data', 'count'));
+                return view('user.allproducts', compact('data', 'count'));
             }
 
             $data = product::where('title','Like','%'.$search.'%')->orWhere('description','Like','%'.$search.'%')->get();
