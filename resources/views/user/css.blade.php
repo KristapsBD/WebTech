@@ -20,3 +20,5 @@
 <link href="{{ asset('assets/css/fontawesome.css') }}" rel='stylesheet' type='text/css' />
 <link href="{{ asset('assets/css/templatemo-sixteen.css') }}" rel='stylesheet' type='text/css' />
 <link href="{{ asset('assets/css/owl.css') }}" rel='stylesheet' type='text/css' />
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">

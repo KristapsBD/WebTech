@@ -12,11 +12,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('redirect') }}">Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('allproducts') }}">Products</a>
+                        <a class="nav-link" href="{{ url('allproducts') }}">{{ __('Products') }}</a>
                     </li>
                     @if (Route::has('login'))
                     @auth
@@ -29,11 +25,11 @@
                                         d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                                 </svg>
                             </div>
-                            Cart[{{ $count }}]
+                            {{ __('Cart') }}[{{ $count }}]
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('orders') }}">My orders
+                        <a class="nav-link" href="{{ url('orders') }}">{{ __('My orders') }}
                         </a>
                     </li>
                     <li>
@@ -41,9 +37,9 @@
                             <form action="{{ url('search') }}" method="get" class="form-inline mx-auto">
                                 @csrf
                                 <input class="form-control" type="search" name="search"
-                                    placeholder="Type something..."></input>
+                                    placeholder="{{ __('Type something...') }}"></input>
                                 <input class=" input-submit btn btn-outline-primary m-1 text-white" type="submit"
-                                    value="Search"></input>
+                                    value="{{ __('Search') }}"></input>
                             </form>
                         </div>
                     </li>
@@ -51,18 +47,34 @@
                         <x-app-layout>
                         </x-app-layout>
                     </li>
-                    @else
-                    <li class="nav-item">
-                        <a href="{{ route('login') }}" class="nav-link">Log in</a>
-                    </li>
-                    @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a href="{{ route('register') }}" class="nav-link">Register</a>
-                    </li>
-                    @endif
-                    @endauth
-                    @endif
-                </ul>
+                    <ul class="navbar-nav ml-auto">
+                        @if(count(config('app.languages')) > 1)
+                        <li class="nav-item dropdown d-md-down-none">
+                            <a class="nav-link" data-toggle="dropdown" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                                {{ strtoupper(app()->getLocale()) }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                @foreach(config('app.languages') as $langLocale => $langName)
+                                <a class="dropdown-item"
+                                    href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }}
+                                    ({{ $langName }})</a>
+                                @endforeach
+                            </div>
+                        </li>
+                        @endif
+                        @else
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link">Log in</a>
+                        </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a href="{{ route('register') }}" class="nav-link">Register</a>
+                        </li>
+                        @endif
+                        @endauth
+                        @endif
+                    </ul>
             </div>
         </div>
     </nav>
