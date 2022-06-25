@@ -16,12 +16,10 @@
                         @php $ratenum = number_format($review_value) @endphp
                         <div class="rating">
                             <span class="m-3">Reviews: {{ $reviews->count() }}</span>
-                            @for($i = 1; $i <= $ratenum; $i++)
-                                <i class="fa fa-star checked"></i>
-                            @endfor
-                            @for($j = $ratenum + 1; $j <= 5; $j++)
-                                <i class="fa fa-star"></i>
-                            @endfor
+                            @for($i = 1; $i <= $ratenum; $i++) <i class="fa fa-star checked"></i>
+                                @endfor
+                                @for($j = $ratenum + 1; $j <= 5; $j++) <i class="fa fa-star"></i>
+                                    @endfor
                         </div>
                         <button type="button" class="btn btn-outline-primary m-3" data-toggle="modal"
                             data-target="#exampleModal">
@@ -70,8 +68,12 @@
 
                         <form action="{{ url('addcart', $product->id) }}" method="post" class="m-3">
                             @csrf
-                            <input class="form-control w-25" style="width: 25%" type="number" value="1" min="1"
-                                name="quantity"></input>
+                            <div class="input-group text-center" style="width: 130px">
+                                <button class="input-group-text decrement-btn">-</button>
+                                <input class="form-control text-center qty-input" type="number" value="1" min="1"
+                                    name="quantity"></input>
+                                <button class="input-group-text increment-btn">+</button>
+                            </div>
                             <input class="btn btn-outline-primary mt-3" type="submit" value="Add to cart"></input>
                         </form>
                     </div>
@@ -80,3 +82,29 @@
         </div>
     </div>
 </div>
+
+<script>
+$(document).ready(function() {
+    $('.increment-btn').click(function(e) {
+        e.preventDefault();
+        var inc_value = $('.qty-input').val();
+        var value = parseInt(inc_value, 10);
+        value = isNaN(value) ? 0 : value;
+        if (value < 10) {
+            value++;
+            $('.qty-input').val(value);
+        }
+    });
+
+    $('.decrement-btn').click(function(e) {
+        e.preventDefault();
+        var dec_value = $('.qty-input').val();
+        var value = parseInt(dec_value, 10);
+        value = isNaN(value) ? 0 : value;
+        if (value > 1) {
+            value--;
+            $('.qty-input').val(value);
+        }
+    });
+})
+</script>

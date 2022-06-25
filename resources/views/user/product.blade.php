@@ -41,8 +41,12 @@
                         <p>{{ $product->description }}</p>
                         <form action="{{ url('addcart', $product->id) }}" method="post">
                             @csrf
-                            <input class="form-control w-25" style="width: 25%" type="number" value="1" min="1"
-                                name="quantity"></input>
+                            <div class="input-group text-center" style="width: 130px">
+                                <button class="input-group-text decrement-btn">-</button>
+                                <input class="form-control text-center qty-input" type="number" value="1" min="1"
+                                    name="quantity"></input>
+                                <button class="input-group-text increment-btn">+</button>
+                            </div>
                             <input class="btn btn-outline-primary mt-3 text-blue" type="submit"
                                 value="Add to cart"></input>
                         </form>
@@ -58,3 +62,26 @@
         @endif
     </div>
 </div>
+
+<script>
+$(document).ready(function() {
+    $('.increment-btn').click(function(e) {
+        e.preventDefault();
+        var $this = $(this),
+            $input = $this.prev('.qty-input'),
+            $parent = $input.closest('div'),
+            newValue = parseInt($input.val(), 10) + 1;
+        newValue <= 10 ? $input.val(newValue) : "";
+
+    });
+
+    $('.decrement-btn').click(function(e) {
+        e.preventDefault();
+        var $this = $(this),
+            $input = $this.next('input'),
+            $parent = $input.closest('div'),
+            newValue = parseInt($input.val()) - 1;
+        newValue >= 1 ? $input.val(newValue) : "";
+    });
+})
+</script>
