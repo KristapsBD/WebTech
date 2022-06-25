@@ -17,6 +17,8 @@
 
     @include('user.cta')
 
+    @include('user.about')
+
     @include('user.footer')
 
     @include('user.scripts')

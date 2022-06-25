@@ -320,6 +320,8 @@ header .navbar {
 
 .latest-products {
 	margin-top: 100px;
+	margin-left:25px;
+	margin-right:25px;
 }
 
 .latest-products .section-heading a {
@@ -381,6 +383,73 @@ header .navbar {
 	color: #0275d8;
 	font-weight: 500;
 }
+
+
+.best-features {
+	margin-top: 50px;
+	margin-left:25px;
+	margin-right:25px;
+}
+
+.best-features .container .row {
+	border-bottom: 1px solid #eee;
+	padding-bottom: 60px;
+}
+
+.best-features img {
+	width: 100%;
+	overflow: hidden;
+}
+
+.best-features h4 {
+	font-size: 17px;
+	color: #1a6692;
+	margin-bottom: 20px;
+}
+
+.best-features ul.featured-list li {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.best-features p {
+	margin-bottom: 25px;
+}
+
+.best-features ul.featured-list li a {
+	font-size: 14px;
+	color: #4a4a4a;
+	font-weight: 300;
+	transition: all .3s;
+	position: relative;
+	padding-left: 13px;
+}
+
+.best-features ul.featured-list li a:before {
+	content: '';
+	width: 5px;
+	height: 5px;
+	display: inline-block;
+	background-color: #4a4a4a;
+	position: absolute;
+	left: 0;
+	transition: all .3s;
+	top: 8px;
+}
+
+.best-features ul.featured-list li a:hover {
+	color: #0275d8;
+}
+
+.best-features ul.featured-list li a:hover::before {
+	background-color: #0275d8;
+}
+
+.best-features .filled-button {
+	margin-top: 20px;
+}
+
+
 
 /* Call To Action */
 
