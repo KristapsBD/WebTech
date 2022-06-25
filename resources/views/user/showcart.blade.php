@@ -27,6 +27,10 @@
                     @endphp
                     @foreach ($cart as $item)
                     <tr>
+                        <td style="display:none">
+                            {{ $item->product_id }}
+                            <input type="text" name="prodid[]" value="{{ $item->product_id }}" hidden>
+                        </td>
                         <td>
                             {{ $item->product_title }}
                             <input type="text" name="productname[]" value="{{ $item->product_title }}" hidden>

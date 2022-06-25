@@ -91,6 +91,7 @@ class HomeController extends Controller
             $cart->name = $user->name;
             $cart->phone = $user->phone;
             $cart->address = $user->address;
+            $cart->product_id = $id;
             $cart->product_title = $product->title;
             $cart->price = $product->price;
             $cart->quantity = $request->quantity;
@@ -126,6 +127,7 @@ class HomeController extends Controller
 
         foreach($request->productname as $key => $productname){
             $order = new order;
+            $order->product_id = $request->prodid[$key];
             $order->product_name = $request->productname[$key];
             $order->price = $request->price[$key];
             $order->quantity = $request->quantity[$key];

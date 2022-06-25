@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,5 +62,7 @@ Route::get('/viewproduct/{id}',[HomeController::class, 'viewproduct']);
 Route::get('/filter',[HomeController::class, 'filter']);
 
 Route::get('/orders',[HomeController::class, 'orders']);
+
+Route::post('/addreview',[ReviewController::class, 'addreview']);
 
 });

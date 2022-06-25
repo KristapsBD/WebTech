@@ -20,7 +20,7 @@
                 <td>{{$item->price}}</td>
                 <td>{{$item->quantity}}</td>
                 <td>{{$item->status}}</td>
-                <td class="w-10"><a class="btn btn-primary" href="{{ url('updatestatus', $item->id) }}">Review</a>
+                <td class="w-10"><a class="btn btn-primary" href="{{ url('viewproduct', $item->product_id) }}">Review</a>
                 </td>
             </tr>
             @endforeach
