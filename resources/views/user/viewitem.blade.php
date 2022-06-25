@@ -13,6 +13,16 @@
                         </a>
                         <h6 class="m-3">${{ $product->price }}</h6>
                         <p class="m-3 w-100">{{ $product->description }}</p>
+                        @php $ratenum = number_format($review_value) @endphp
+                        <div class="rating">
+                            <span class="m-3">Reviews: {{ $reviews->count() }}</span>
+                            @for($i = 1; $i <= $ratenum; $i++)
+                                <i class="fa fa-star checked"></i>
+                            @endfor
+                            @for($j = $ratenum + 1; $j <= 5; $j++)
+                                <i class="fa fa-star"></i>
+                            @endfor
+                        </div>
                         <button type="button" class="btn btn-outline-primary m-3" data-toggle="modal"
                             data-target="#exampleModal">
                             Rate product

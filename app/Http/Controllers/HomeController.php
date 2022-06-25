@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Review;
 
 class HomeController extends Controller
 {
@@ -145,8 +146,16 @@ class HomeController extends Controller
         $product = product::find($id);
         $user = auth()->user();
         $count = cart::where('phone', $user->phone)->count();
+        $reviews = Review::where('prod_id', $id)->get();
+        if($reviews->count() > 0){
+            $review_sum = Review::where('prod_id', $id)->sum('stars');
+            $review_value = $review_sum / $reviews->count();
+        } else {
+            $review_value = 0;
+        }
 
-        return view('user.viewproduct', compact('product', 'count'));
+
+        return view('user.viewproduct', compact('product', 'count', 'reviews', 'review_value'));
     }
 
     public function filter(Request $request){

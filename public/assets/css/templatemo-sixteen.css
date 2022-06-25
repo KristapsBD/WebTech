@@ -600,6 +600,10 @@ footer .inner-content p a {
 
 /* End of Star Rating */
 
+.checked{
+	color: #ffe400;
+}
+
 /* Responsive Style */
 @media (max-width: 768px) {
 	.banner .text-content {
