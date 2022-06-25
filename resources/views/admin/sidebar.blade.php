@@ -9,7 +9,7 @@
             <li class="nav-item nav-category">
                 <span class="nav-link text-white">Navigation</span>
             </li>
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{ Request::is('product') ? 'active' : '' }}">
                 <a class="nav-link" href="{{'product'}}">
                     <span class="menu-icon">
                         <i class="mdi mdi-plus-circle"></i>
@@ -17,7 +17,7 @@
                     <span class="menu-title text-white">Add new product</span>
                 </a>
             </li>
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{ Request::is('showprod') ? 'active' : '' }}">
                 <a class="nav-link" href="{{'showprod'}}">
                     <span class="menu-icon">
                         <i class="mdi mdi-eye"></i>
@@ -25,7 +25,7 @@
                     <span class="menu-title text-white">Show products</span>
                 </a>
             </li>
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{ Request::is('showorder') ? 'active' : '' }}">
                 <a class="nav-link" href="{{'showorder'}}">
                     <span class="menu-icon">
                         <i class="mdi mdi-file-document-box"></i>
