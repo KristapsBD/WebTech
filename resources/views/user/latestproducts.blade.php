@@ -16,10 +16,10 @@
                             alt="Product image" style="width:300px; height:300px;"></a>
                     <div class="down-content">
                         <a href="{{ url('viewproduct', $product->id) }}">
-                            <h4>{{ $product->title }}</h4>
+                            <h4>{{ __($product->title) }}</h4>
                         </a>
                         <h6>${{ $product->price }}</h6>
-                        <p>{{ $product->description }}</p>
+                        <p>{{ __($product->description) }}</p>
                         <form action="{{ url('addcart', $product->id) }}" method="post">
                             @csrf
                             <input class="form-control w-25" style="width: 25%" type="number" value="1" min="1"
