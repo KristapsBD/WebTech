@@ -24,7 +24,8 @@ class HomeController extends Controller
 
             $user = auth()->user();
             $count = cart::where('phone', $user->phone)->count();
-            $latestdata = product::latest()->take(3)->get();
+            $latestdata = product::orderBy('id','desc')->take(3)->get();
+            
 
             return view('user.home', compact('data', 'count', 'latestdata'));
         }
@@ -51,10 +52,10 @@ class HomeController extends Controller
         if(Auth::id()){
             return redirect('redirect');
         } else {
-            $data = product::paginate(6);
-            $latestdata = product::latest()->take(3)->get();
+            
+            $latestdata = product::orderBy('id','desc')->take(3)->get();
 
-            return view('user.home', compact('data', 'latestdata'));
+            return view('user.home', compact('latestdata'));
         }
     }
 
