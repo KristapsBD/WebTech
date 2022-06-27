@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Review;
+use App\Models\Comment;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,7 @@ class HomeController extends Controller
             $user = auth()->user();
             $count = cart::where('phone', $user->phone)->count();
             $latestdata = product::orderBy('id','desc')->take(3)->get();
-            
+
 
             return view('user.home', compact('data', 'count', 'latestdata'));
         }
@@ -52,7 +53,7 @@ class HomeController extends Controller
         if(Auth::id()){
             return redirect('redirect');
         } else {
-            
+
             $latestdata = product::orderBy('id','desc')->take(3)->get();
 
             return view('user.home', compact('latestdata'));
@@ -75,12 +76,12 @@ class HomeController extends Controller
 
             if($search == ''){
                 $data = product::paginate(6);
-    
+
                 return view('user.allproducts', compact('data', 'count'));
             }
 
             $data = product::where('title','Like','%'.$search.'%')->orWhere('description','Like','%'.$search.'%')->get();
-    
+
             return view('user.allproducts', compact('data', 'count'));
         }
     }
@@ -117,7 +118,7 @@ class HomeController extends Controller
     public function deletecart($id){
         $data = cart::find($id);
         $data->delete();
-        
+
         return redirect()->back()->with('message','Product removed from cart!');
     }
 
@@ -155,6 +156,7 @@ class HomeController extends Controller
         $user = auth()->user();
         $count = cart::where('phone', $user->phone)->count();
         $reviews = Review::where('prod_id', $id)->get();
+        $comments = Comment::where('prod_id', $id)->get();
         if($reviews->count() > 0){
             $review_sum = Review::where('prod_id', $id)->sum('stars');
             $review_value = $review_sum / $reviews->count();
@@ -163,7 +165,7 @@ class HomeController extends Controller
         }
 
 
-        return view('user.viewproduct', compact('product', 'count', 'reviews', 'review_value'));
+        return view('user.viewproduct', compact('product', 'count', 'reviews', 'review_value', 'comments'));
     }
 
     public function filter(Request $request){
