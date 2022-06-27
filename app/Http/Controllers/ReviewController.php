@@ -45,7 +45,7 @@ class ReviewController extends Controller
        }
     }
 
-    public function addcomment($id){
+    public function writecomment($id){
         $product = Product::where('id', $id)->first();
         $user = auth()->user();
         $count = cart::where('phone', $user->phone)->count();
@@ -75,6 +75,40 @@ class ReviewController extends Controller
 
         } else {
             return redirect()->back()->with('message', 'Broken link!');
+        }
+    }
+
+    public function editcomment($id){
+        $product = Product::where('id', $id)->first();
+        $user = auth()->user();
+        $count = cart::where('phone', $user->phone)->count();
+
+        if($product){
+            $comment = Comment::where('user_id', Auth::id())->where('prod_id', $id)->first();
+            if($comment){
+                return view('reviews.edit', compact('comment', 'count'));
+            } else {
+                return redirect()->back()->with('message', 'Broken link!');
+            }
+        } else {
+            return redirect()->back()->with('message', 'Broken link!');
+        }
+    }
+
+    public function updatecomment(Request $request){
+        $user_comment = $request->input('user_comment');
+
+        if($user_comment != ''){
+            $review_id = $request->input('comment_id');
+            $review = Review::where('id', $review_id)->where('user_id', Auth::id())->first();
+
+            if($review){
+                $review->comment = $user_comment;
+                $review->update();
+                return redirect('viewitem/'.$review->product->id)->with('message', 'Review updated successfully!');
+            } else {
+                return redirect()->back()->with('message', 'Cannot submit empty review!');
+            }
         }
     }
 }

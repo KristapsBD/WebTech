@@ -42,9 +42,13 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
 
     Route::post('/addreview',[ReviewController::class, 'addreview']);
 
-    Route::get('/addcomment/{id}/usercomment',[ReviewController::class, 'addcomment']);
+    Route::get('/writecomment/{id}/usercomment',[ReviewController::class, 'writecomment']);
 
     Route::post('/addcomment',[ReviewController::class, 'createcomment']);
+
+    Route::get('editcomment/{id}/usercomment',[ReviewController::class, 'editcomment']);
+
+    Route::put('/updatecomment',[ReviewController::class, 'updatecomment']);
 
     Route::middleware(['auth', 'isAdmin'])->group(function () {
 
