@@ -27,7 +27,7 @@
                             data-target="#exampleModal">
                             Rate product
                         </button>
-                        <a href="{{ url('addcomment/'.$product->id.'/usercomment') }}" class="m-3">Add comment</a>
+                        <a href="{{ url('writecomment/'.$product->id.'/usercomment') }}" class="m-3">Add comment</a>
                         <div class="modal fade mt-5" id="exampleModal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">

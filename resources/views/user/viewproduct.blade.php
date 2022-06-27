@@ -13,6 +13,8 @@
 
     @include('user.viewitem')
 
+    @include('reviews.showreview')
+
     @include('user.cta')
 
     @include('user.footer')
