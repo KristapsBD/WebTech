@@ -91,7 +91,6 @@ class ReviewController extends Controller
 
         if($product){
             $comment = Comment::where('user_id', Auth::id())->where('prod_id', $id)->first();
-            return $comment;
             if($comment){
                 return view('reviews.edit', compact('comment', 'count'));
             } else {
