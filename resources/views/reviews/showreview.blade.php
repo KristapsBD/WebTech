@@ -5,7 +5,7 @@
             <div class="user-comment">
                 <label class="label-primary">{{ $comment->user->name }}</label>
                 @if($comment->user_id == Auth::id())
-                    <a href="{{ url('editcomment/'.$product->id.'/usercomment') }}">edit</a><br>
+                <label class="badge bg-info ml-3"><a href="{{ url('editcomment/'.$product->id.'/usercomment') }}"">Edit</a></label><br>
                 @endif
                 @php
                     $stars_rated = App\Models\Review::where('prod_id', $product->id)->where('user_id', $comment->user->id)->first();
