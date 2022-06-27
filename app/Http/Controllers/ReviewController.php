@@ -48,11 +48,17 @@ class ReviewController extends Controller
     public function writecomment($id){
         $product = Product::where('id', $id)->first();
         $user = auth()->user();
-        $count = cart::where('phone', $user->phone)->count();
-        if($product){
-            $purchased = Order::where('phone', $user->phone)->where('product_name', $product->title)->first();
+        $count = Cart::where('phone', $user->phone)->count();
 
-            return view('reviews.index', compact('product', 'purchased', 'count'));
+        if($product){
+            $comment = Comment::where('user_id', Auth::id())->where('prod_id', $id)->first();
+            if($comment){
+                return view('reviews.edit', compact('comment', 'count'));
+            } else {
+                $purchased = Order::where('phone', $user->phone)->where('product_name', $product->title)->first();
+
+                return view('reviews.index', compact('product', 'purchased', 'count'));
+            }
         } else {
             return redirect()->back()->with('message', 'Broken link!');
         }
@@ -85,6 +91,7 @@ class ReviewController extends Controller
 
         if($product){
             $comment = Comment::where('user_id', Auth::id())->where('prod_id', $id)->first();
+            return $comment;
             if($comment){
                 return view('reviews.edit', compact('comment', 'count'));
             } else {
@@ -100,12 +107,12 @@ class ReviewController extends Controller
 
         if($user_comment != ''){
             $review_id = $request->input('comment_id');
-            $review = Review::where('id', $review_id)->where('user_id', Auth::id())->first();
+            $review = Comment::where('id', $review_id)->where('user_id', Auth::id())->first();
 
             if($review){
                 $review->comment = $user_comment;
                 $review->update();
-                return redirect('viewitem/'.$review->product->id)->with('message', 'Review updated successfully!');
+                return redirect('viewproduct/'.$review->product->id)->with('message', 'Review updated successfully!');
             } else {
                 return redirect()->back()->with('message', 'Cannot submit empty review!');
             }

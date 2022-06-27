@@ -7,9 +7,12 @@
                 @if($comment->user_id == Auth::id())
                     <a href="{{ url('editcomment/'.$product->id.'/usercomment') }}">edit</a><br>
                 @endif
-                @if($comment->review)
+                @php
+                    $stars_rated = App\Models\Review::where('prod_id', $product->id)->where('user_id', $comment->user->id)->first();
+                @endphp
+                @if($stars_rated)
                     @php
-                        $user_rated = $comment->review->stars
+                        $user_rated = $stars_rated->stars
                     @endphp
                     @for ($i = 1; $i <= $user_rated; $i++)
                         <i class="fa fa-star checked"></i>

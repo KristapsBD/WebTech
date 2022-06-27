@@ -22,10 +22,6 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function review(){
-        return $this->belongsTo(Review::class, 'user_id', 'user_id');
-    }
-
     public function product(){
         return $this->belongsTo(Product::class, 'prod_id', 'id');
     }
