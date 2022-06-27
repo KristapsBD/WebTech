@@ -18,16 +18,23 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $users = [
-            ['name' => 'user',
-            'email' => 'user@gmail.com',
+            ['name' => 'First User',
+            'email' => 'user1@gmail.com',
             'usertype' => 0,
             'phone' => '+37120289000',
             'address' => 'Iecavas street 5',
             'password' => Hash::make('parole123'),
             'created_at' => date("Y-m-d H:i:s")],
-            ['name' => 'admin',
+            ['name' => 'Admin',
             'email' => 'admin@gmail.com',
             'usertype' => 1,
+            'phone' => '+37120289000',
+            'address' => 'Iecavas street 5',
+            'password' => Hash::make('parole123'),
+            'created_at' => date("Y-m-d H:i:s")],
+            ['name' => 'Second User',
+            'email' => 'user2@gmail.com',
+            'usertype' => 0,
             'phone' => '+37120289000',
             'address' => 'Iecavas street 5',
             'password' => Hash::make('parole123'),
@@ -119,7 +126,31 @@ class DatabaseSeeder extends Seeder
             'prod_id' => '6',
             'stars' => 5,
             'created_at' => date("Y-m-d H:i:s")],
+            ['user_id' => '3',
+            'prod_id' => '5',
+            'stars' => 5,
+            'created_at' => date("Y-m-d H:i:s")],
         ];
         DB::table('reviews')->insert($reviews);
+
+        $comments = [
+            ['user_id' => '1',
+            'prod_id' => '4',
+            'comment' => 'Very nice and stylish product. Im happy with the result. Delivery was also very fast. Thank you so much for this amazing item!',
+            'created_at' => date("Y-m-d H:i:s")],
+            ['user_id' => '1',
+            'prod_id' => '5',
+            'comment' => 'Super cool looking amazing item and I am very happy thank you so much!',
+            'created_at' => date("Y-m-d H:i:s")],
+            ['user_id' => '1',
+            'prod_id' => '6',
+            'comment' => 'Very good quality and fast delivery super excited cant wait to wear it thankful for this amazing store',
+            'created_at' => date("Y-m-d H:i:s")],
+            ['user_id' => '3',
+            'prod_id' => '5',
+            'comment' => 'Very nice item im happy and I love it!',
+            'created_at' => date("Y-m-d H:i:s")],
+        ];
+        DB::table('comments')->insert($comments);
     }
 }
