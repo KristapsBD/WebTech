@@ -23,7 +23,7 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->phone}}</td>
                 <td>{{$user->address}}</td>
-                <td>{{$user->usertype}}</td>
+                <td>{{$user->usertype == 0 ? 'User' : 'Admin'}}</td>
                 <td class="w-10">
                     <a class="btn btn-primary" href="{{ url('promote', $user->id) }}">Promote</a>
                     <a class="btn btn-danger" href="{{ url('deleteuser', $user->id) }}" onclick="return confirm('Are you sure?')">Delete</a>
