@@ -65,7 +65,13 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div>
+                            @if($product->quantity >0)
+                                <label class="badge bg-success ml-3">In stock</label>
+                            @else
+                                <label class="badge bg-danger ml-3">Out of stock</label>
+                            @endif
+                        </div>
                         <form action="{{ url('addcart', $product->id) }}" method="post" class="m-3">
                             @csrf
                             <div class="input-group text-center" style="width: 130px">
@@ -74,7 +80,9 @@
                                     name="quantity"></input>
                                 <button class="input-group-text increment-btn">+</button>
                             </div>
-                            <input class="btn btn-outline-primary mt-3" type="submit" value="Add to cart"></input>
+                            @if($product->quantity >0)
+                                <input class="btn btn-outline-primary mt-3" type="submit" value="Add to cart"></input>
+                            @endif
                         </form>
                     </div>
                 </div>
