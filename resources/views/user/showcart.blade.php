@@ -54,10 +54,16 @@
                         @endfor
                     </tr>
                     @endforeach
+                    @if($count == 0)
+                    <tr>
+                        <td colspan="4" class="bg-light text-center font-weight-bold">Your cart is empty!</td>
+                    <tr>
+                    @else
                     <tr>
                         <td colspan="2" class="bg-light">Total</td>
                         <td colspan="2" class="bg-light">${{ $total }}</td>
                     <tr>
+                    @endif
         </table>
         <!-- Add hacker protection -->
         @if($total != 0)
