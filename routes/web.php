@@ -18,51 +18,48 @@ use App\Http\Controllers\ReviewController;
 
 Route::get('/',[HomeController::class, 'index']);
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
 
-Route::get('/redirect',[HomeController::class, 'redirect']);
+    Route::get('/redirect',[HomeController::class, 'redirect']);
 
-Route::get('/product',[AdminController::class, 'product']);
+    Route::get('/search',[HomeController::class, 'search']);
 
-Route::post('/uploadproduct',[AdminController::class, 'uploadproduct']);
+    Route::post('/addcart/{id}',[HomeController::class, 'addcart']);
 
-Route::get('/showprod',[AdminController::class, 'showproduct']);
+    Route::get('/showcart',[HomeController::class, 'showcart']);
 
-Route::get('/deleteproduct/{id}',[AdminController::class, 'deleteproduct']);
+    Route::get('/delete/{id}',[HomeController::class, 'deletecart']);
 
-Route::get('/updateview/{id}',[AdminController::class, 'updateview']);
+    Route::post('/order',[HomeController::class, 'confirmorder']);
 
-Route::post('/updateproduct/{id}',[AdminController::class, 'updateproduct']);
+    Route::get('/allproducts',[HomeController::class, 'allproducts']);
 
-Route::get('/search',[HomeController::class, 'search']);
+    Route::get('/viewproduct/{id}',[HomeController::class, 'viewproduct']);
 
-Route::post('/addcart/{id}',[HomeController::class, 'addcart']);
+    Route::get('/filter',[HomeController::class, 'filter']);
 
-Route::get('/showcart',[HomeController::class, 'showcart']);
+    Route::get('/orders',[HomeController::class, 'orders']);
 
-Route::get('/delete/{id}',[HomeController::class, 'deletecart']);
+    Route::post('/addreview',[ReviewController::class, 'addreview']);
 
-Route::post('/order',[HomeController::class, 'confirmorder']);
+    Route::middleware(['auth', 'isAdmin'])->group(function () {
 
-Route::get('/showorder',[AdminController::class, 'showorder']);
+        Route::get('/product',[AdminController::class, 'product']);
 
-Route::get('/updatestatus/{id}',[AdminController::class, 'updatestatus']);
+        Route::post('/uploadproduct',[AdminController::class, 'uploadproduct']);
 
-Route::get('/allproducts',[HomeController::class, 'allproducts']);
+        Route::get('/showprod',[AdminController::class, 'showproduct']);
 
-Route::get('/viewproduct/{id}',[HomeController::class, 'viewproduct']);
+        Route::get('/deleteproduct/{id}',[AdminController::class, 'deleteproduct']);
 
-Route::get('/filter',[HomeController::class, 'filter']);
+        Route::get('/updateview/{id}',[AdminController::class, 'updateview']);
 
-Route::get('/orders',[HomeController::class, 'orders']);
+        Route::post('/updateproduct/{id}',[AdminController::class, 'updateproduct']);
 
-Route::post('/addreview',[ReviewController::class, 'addreview']);
+        Route::get('/showorder',[AdminController::class, 'showorder']);
+
+        Route::get('/updatestatus/{id}',[AdminController::class, 'updatestatus']);
+
+    });
 
 });
