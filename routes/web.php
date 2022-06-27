@@ -42,6 +42,10 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
 
     Route::post('/addreview',[ReviewController::class, 'addreview']);
 
+    Route::get('/addcomment/{id}/usercomment',[ReviewController::class, 'addcomment']);
+
+    Route::post('/addcomment',[ReviewController::class, 'createcomment']);
+
     Route::middleware(['auth', 'isAdmin'])->group(function () {
 
         Route::get('/product',[AdminController::class, 'product']);
