@@ -60,6 +60,12 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
 
         Route::get('/updatestatus/{id}',[AdminController::class, 'updatestatus']);
 
+        Route::get('/showuser',[AdminController::class, 'showuser']);
+
+        Route::get('/promote/{id}',[AdminController::class, 'promote']);
+
+        Route::get('/deleteuser/{id}',[AdminController::class, 'deleteuser']);
+
     });
 
 });

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -16,7 +17,7 @@ class AdminController extends Controller
             } else {
                 return redirect()->back();
             }
-            
+
         } else {
             return redirect('login');
         }
@@ -88,5 +89,26 @@ class AdminController extends Controller
         $order->save();
 
         return redirect()->back();
+    }
+
+    public function showuser(){
+        $users = User::all();
+        return view('admin.showuser', compact('users'));
+    }
+
+    public function promote($id){
+        $user = User::find($id);
+
+        $user->usertype = 1;
+
+        $user->save();
+
+        return redirect()->back()->with('message','User promoted to admin!');
+    }
+
+    public function deleteuser($id){
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->back()->with('message','User deleted!');
     }
 }

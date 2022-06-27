@@ -33,5 +33,13 @@
                     <span class="menu-title text-white">View orders</span>
                 </a>
             </li>
+            <li class="nav-item menu-items {{ Request::is('showuser') ? 'active' : '' }}">
+                <a class="nav-link" href="{{'showuser'}}">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-account"></i>
+                    </span>
+                    <span class="menu-title text-white">View users</span>
+                </a>
+            </li>
         </ul>
     </nav>
