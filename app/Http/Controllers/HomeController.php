@@ -157,6 +157,7 @@ class HomeController extends Controller
         $count = cart::where('phone', $user->phone)->count();
         $reviews = Review::where('prod_id', $id)->get();
         $comments = Comment::where('prod_id', $id)->get();
+        $user_review = Review::where('prod_id', $id)->where('user_id', Auth::id())->first();
         if($reviews->count() > 0){
             $review_sum = Review::where('prod_id', $id)->sum('stars');
             $review_value = $review_sum / $reviews->count();
@@ -165,7 +166,7 @@ class HomeController extends Controller
         }
 
 
-        return view('user.viewproduct', compact('product', 'count', 'reviews', 'review_value', 'comments'));
+        return view('user.viewproduct', compact('product', 'count', 'reviews', 'review_value', 'comments', 'user_review'));
     }
 
     public function filter(Request $request){
