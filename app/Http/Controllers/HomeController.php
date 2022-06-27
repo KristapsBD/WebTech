@@ -137,7 +137,14 @@ class HomeController extends Controller
             $order->phone = $phone;
             $order->address = $address;
             $order->status = 'Not delivered';
-            $order->save();
+            $product = Product::find($request->prodid[$key]);
+            $quantity = $product->quantity - $request->quantity[$key];
+            if($quantity < 0){
+                return redirect()->back()->with('message','Order failed! Not enough stock!');
+            } else {
+                $product->update(['quantity' => $quantity]);
+                $order->save();
+            }
         }
         DB::table('carts')->where('phone', $phone)->delete();
         return redirect()->back()->with('message','Order sent!');
