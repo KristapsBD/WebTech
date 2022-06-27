@@ -27,7 +27,8 @@
                             data-target="#exampleModal">
                             Rate product
                         </button>
-                        <a href="{{ url('writecomment/'.$product->id.'/usercomment') }}" class="m-3">Add comment</a>
+                        <a href="{{ url('writecomment/' . $product->id . '/usercomment') }}" class="m-3">Add
+                            comment</a>
                         <div class="modal fade mt-5" id="exampleModal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -75,23 +76,23 @@
                         </div>
                         <div>
                             @if ($product->quantity > 0)
-                                <label class="badge bg-success ml-3">In stock</label>
+                                <label class="badge bg-success ml-3">In stock [{{ $product->quantity }}]</label>
                             @else
                                 <label class="badge bg-danger ml-3">Out of stock</label>
                             @endif
                         </div>
-                        <form action="{{ url('addcart', $product->id) }}" method="post" class="m-3">
-                            @csrf
-                            <div class="input-group text-center" style="width: 130px">
-                                <button class="input-group-text decrement-btn">-</button>
-                                <input class="form-control text-center qty-input" type="number" value="1"
-                                    min="1" name="quantity"></input>
-                                <button class="input-group-text increment-btn">+</button>
-                            </div>
-                            @if ($product->quantity > 0)
+                        @if ($product->quantity > 0)
+                            <form action="{{ url('addcart', $product->id) }}" method="post" class="m-3">
+                                @csrf
+                                <div class="input-group text-center" style="width: 130px">
+                                    <button class="input-group-text decrement-btn">-</button>
+                                    <input class="form-control text-center qty-input" type="number" value="1"
+                                        min="1" name="quantity"></input>
+                                    <button class="input-group-text increment-btn">+</button>
+                                </div>
                                 <input class="btn btn-primary mt-3" type="submit" value="Add to cart"></input>
-                            @endif
-                        </form>
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>
