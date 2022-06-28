@@ -88,7 +88,7 @@ class AdminController extends Controller
 
         $order->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('message','Status updated!');
     }
 
     public function showuser(){

@@ -1,5 +1,13 @@
 <div class="container-fluid page-body-wrapper mt-5">
     <div class="container" align="center">
+
+        @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()-> get('message') }}
+            <button type="button" class="close float-end" data-bs-dismiss="alert">X</button>
+        </div>
+        @endif
+
         <table class="table table-dark table-bordered text-white">
             <tr class="text-white">
                 <th class="p-3 bg-black">Customer name</th>
