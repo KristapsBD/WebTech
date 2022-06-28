@@ -83,7 +83,7 @@ class DatabaseSeeder extends Seeder
         DB::table('products')->insert($products);
 
         $orders = [
-            ['name' => 'user',
+            ['name' => 'First User',
             'phone' => '+37120289000',
             'address' => 'Iecavas street 5',
             'product_id' => '4',
@@ -92,7 +92,7 @@ class DatabaseSeeder extends Seeder
             'price' => 20,
             'status' => 'Not delivered',
             'created_at' => date("Y-m-d H:i:s")],
-            ['name' => 'user',
+            ['name' => 'First User',
             'phone' => '+37120289000',
             'address' => 'Iecavas street 5',
             'product_id' => '5',
@@ -101,7 +101,7 @@ class DatabaseSeeder extends Seeder
             'price' => 15,
             'status' => 'Not delivered',
             'created_at' => date("Y-m-d H:i:s")],
-            ['name' => 'user',
+            ['name' => 'First User',
             'phone' => '+37120289000',
             'address' => 'Iecavas street 5',
             'product_id' => '6',
